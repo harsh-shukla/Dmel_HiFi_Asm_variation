@@ -1,0 +1,36 @@
+MULLER	CONTIG	ORIENTATION	LENGTH	EVIDENCE
+2L	ptg000004l	+	22957380	HiC,Alignment_with_Ref
+2L	ptg000039l	+	1297834	HiC,Alignment_with_Ref
+
+2R	ptg000021l	-	404303	HiC,Alignment_with_Ref
+2R	ptg000106l	-	330689	HiC,Alignment_with_Ref
+2R	ptg000054l	+	1011668	HiC,Alignment_with_Ref
+2R	ptg000073l	+	393039	HiC,Alignment_with_Ref
+2R	ptg000025l	-	2017938	HiC,Alignment_with_Ref
+2R	ptg000007l	+	21715718	HiC,Alignment_with_Ref
+
+3L	ptg000001l	+	24627838	HiC,Alignment_with_Ref
+3L	ptg000014l	+	476220	HiC,Alignment_with_Ref_with_doubt,EndRepeatsStart
+3L	ptg000009l	-	1813985	HiC,Alignment_with_Ref
+3L	ptg000038l	-	834700	HiC,Alignment_with_Ref
+3L	ptg000006l	+	1192223	HiC,Alignment_with_Ref
+
+3R	ptg000026l	-	739644	HiC,Alignment_with_Ref_with_doubt,EndRepeatsEnd
+3R	ptg000012l	+	1904412	HiC,Alignment_with_Ref
+3R	ptg000072l	+	450122	HiC,Alignment_with_Ref
+3R	ptg000023l	-	522051	HiC,Alignment_with_Ref
+3R	ptg000028l	+	572794	HiC,Alignment_with_Ref
+3R	ptg000019l	-	599288	HiC,Alignment_with_Ref
+3R	ptg000132l	+	84215	HiC,Alignment_with_Ref
+3R	ptg000091l	-	87136	HiC,Alignment_with_Ref
+3R	ptg000015l	+	960785	HiC,Alignment_with_Ref
+3R	ptg000090l	-	98218	HiC,Alignment_with_Ref
+3R	ptg000005l	+	2181158	HiC,Alignment_with_Ref
+3R	ptg000003l	+	25661051	HiC,Alignment_with_Ref
+3R	ptg000079l	+	198020	HiC,Alignment_with_Ref
+
+4	ptg000032l	-	783471	HiC,Alignment_with_Ref
+4	ptg000048l	+	518778	HiC,Alignment_with_Ref
+
+X	ptg000051l	+	208214	HiC,Alignment_with_Ref
+X	ptg000002l	+	27238607	HiC,Alignment_with_Ref

@@ -1,0 +1,4 @@
+MULLER	CONTIG	ORIENTATION	LENGTH	EVIDENCE
+Histone_Locus	NODE_utg000002l+_length_236013_cov_0	-	236013	Align_with_ISOhifi
+Histone_Locus	NODE_utg000005l_utg000008l_utg000009l_utg000006l+_length_360157_cov_0	-	360157	Align_with_ISOhifi	
+

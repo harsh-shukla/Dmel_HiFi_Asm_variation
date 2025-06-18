@@ -21,7 +21,7 @@ This directory contains all scripts related to generating high-quality, chromoso
 Contains scripts for generating and visualizing synteny dot plots between genome assemblies using `minimap2` and `D-Genies`.
 
 ### 3_Repeat_identification
-Contains scripts for identifying and masking repetitive elements using `RepeatMasker`. This directory also includes a FASTA file with the custom sequences (e.g., for Histone, Stellate, and rDNA) that were added to the default Dfam library for our study.
+Contains scripts for identifying repetitive elements using `RepeatMasker`. This directory also includes a FASTA file with the custom sequences (e.g., for Histone, Stellate, and rDNA) that were added to the default Dfam library for our study.
 
 ### 4_Depth_analysis
 Contains scripts used to calculate per-base read depth. This analysis was used throughout the project to validate assembly structure, such as checking for collapsed or expanded regions in tandem arrays.
@@ -32,13 +32,17 @@ This directory is dedicated to the comprehensive analysis of the histone gene cl
 * `Targeted_genome_Assembly`: Scripts for the targeted assembly of the histone locus from a subset of HiFi reads using `hifiasm` with repeat-sensitive parameters.
 * `Copy_number_estimation_from_short_read`: Scripts for estimating histone gene copy number in the Global Diversity Lines (GDL) by mapping Illumina short-read data to a single reference histone unit.
 * `LD_analysis`: Scripts for performing Linkage Disequilibrium (LD) analysis on variants flanking the histone locus in the Drosophila Genome Nexus (DGN) population data.
-* `Analysis_histone_locus_phylogenetic_methods`: Scripts to extract individual histone repeat unit sequences from the assemblies. [cite_start]These sequences were subsequently used for phylogenetic analysis in `MEGA`.
+* `Analysis_histone_locus_phylogenetic_methods`: Scripts to extract individual histone repeat unit sequences from the assemblies. These sequences were subsequently used for phylogenetic analysis in `MEGA`.
+
+### Scripts_for_plotting_Figures
+This directory contains the R and/or Python scripts used to generate the figures presented in the manuscript. These scripts take the output files from the primary analysis pipelines to create the plots.
+
 
 ## Citation
 
 If you use the code or data from this repository, please cite our paper:
 
-> Shukla, H. G., Chakraborty, M., & Emerson, J. J. (2024). Genetic variation in recalcitrant repetitive regions of the Drosophila melanogaster genome. *bioRxiv*.
+> Shukla, H. G., Chakraborty, M., & Emerson, J. J. (2024). Genetic variation in recalcitrant repetitive regions of the Drosophila melanogaster genome. *bioRxiv*. [Link](https://www.biorxiv.org/content/10.1101/2024.06.11.598575v1)
 
 ## Author & Contact
 

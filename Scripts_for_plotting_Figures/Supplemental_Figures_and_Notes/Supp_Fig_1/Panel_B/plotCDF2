@@ -1,0 +1,91 @@
+#!/usr/bin/env Rscript
+
+
+## Copyright : JJ Emerson 
+
+library(ggplot2)
+args <- commandArgs(trailingOnly = TRUE)
+
+mytheme = theme(
+	axis.text.x = element_text(color = 'black', size = 20, margin = margin(rep(4, 4))), 
+	axis.text.y = element_text(color = 'black', size = 20, margin = margin(rep(2, 4))), 
+	axis.title.x = element_text(color = "black", size = 25, margin = margin(rep(15, 4))), 
+	axis.title.y = element_text(color = "black", size = 25,  margin = margin(rep(15, 4))), 
+	plot.title = element_text(color = "black", hjust = 0.5, size = 20, margin = margin(rep(15, 4))),
+	legend.key = element_blank(),,
+	legend.key.size = unit(1.5, "cm"),
+	legend.title = element_text(color = "black",size=28),
+	legend.text = element_text(color = "black", size = 24), 
+	legend.background = element_rect(fill = 'white', color = "white"))
+
+
+
+if (!length(args) > 1) {
+  stop("
+Usage: plotCDF2 infile(s) outfile
+Takes one or more contig length files sorted in descending order
+and returns a single png figure of the CDF plot of them.
+The file should have a header with the names 'Length' and
+'Assembly' and should be sorted by Length. It is helpful
+to have a 0 as the first length in order to make very
+contiguous plots look better, though it isn't necessary."
+    )
+}
+
+newColumns <- function(x) {
+  # The "!x[1]" is a way to start the ranking from 0 if a 0 length is included.
+  # Otherwise, start ranking at 1.
+  ans <- data.frame('Sequence_Rank' = seq_along(x)-!x[1], 'CDF' = cumsum(x))
+  ans <- within(
+    data = ans,
+    Sequence_Rank[Sequence_Rank == 0] <- 0
+  )
+
+  return(ans)
+}
+
+infiles <- args[-length(args)]
+outfile <- args[length(args)]
+
+cnxns <- lapply(X = infiles, FUN = fifo)
+dat <- data.frame(
+  do.call(
+    what = rbind,
+    args = lapply(X = cnxns, FUN = read.table, header = TRUE, stringsAsFactors = FALSE)
+  )
+)
+dat$Assembly <- factor(x = dat$Assembly, levels = unique(dat$Assembly))
+
+newcols <- do.call(
+  what = rbind,
+  args = with(
+    dat,
+    tapply(
+      X = Length,
+      INDEX = Assembly,
+      FUN = newColumns
+    )
+  )
+)
+
+# Add the new columns
+#dat <- cbind(dat, newcols)
+dat[,c('Sequence_Rank','CDF')] <- newcols
+save(dat, file = 'tmp.RData')
+
+# Get rid of sequences after the first 1,000.
+dat <- subset(dat, Sequence_Rank <= 1000)
+
+#png(filename = outfile, width = 640, height = 480)
+
+p <- ggplot(data = dat, aes(x = Sequence_Rank, y = CDF)) +
+  theme(text = element_text(size = 20)) +
+  geom_line(aes(color = Assembly), size = 1.5) +
+  scale_x_log10(breaks = c(1, 3, 10, 30, 100, 300), limits = c(NA,300)) + scale_y_continuous(name="Cumulative contig length (Mb)",breaks=seq(0,175000000,25000000),labels=seq(0,175,25)) + xlab("Sequence length rank  (log10 scale)")  + mytheme
+
+ggsave("CDF.pdf", width = 10, height = 8)
+
+#sink(file = '/dev/null')
+#dev.off()
+
+quit()
